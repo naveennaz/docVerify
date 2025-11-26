@@ -166,15 +166,11 @@ export class DocumentController {
       return this.documentRepository.find({
         ...filter,
         where: {...filter?.where, uploadedBy: userId},
-        include: [{relation: 'uploader'}, {relation: 'documentType'}],
       });
     }
 
     // Admin and approver can see all
-    return this.documentRepository.find({
-      ...filter,
-      include: [{relation: 'uploader'}, {relation: 'documentType'}],
-    });
+    return this.documentRepository.find(filter);
   }
 
   @get('/documents/{id}')

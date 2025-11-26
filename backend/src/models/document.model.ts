@@ -151,12 +151,6 @@ export class Document extends Entity {
   })
   updatedAt?: Date;
 
-  @belongsTo(() => User, {name: 'uploader'})
-  uploaderId: number;
-
-  @belongsTo(() => DocumentType)
-  documentTypeRelId: number;
-
   constructor(data?: Partial<Document>) {
     super(data);
   }

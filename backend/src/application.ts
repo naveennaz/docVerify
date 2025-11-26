@@ -57,6 +57,9 @@ export class Backend extends BootMixin(RepositoryMixin(RestApplication)) {
     // Bind JWT & User services
     this.bind('services.jwt.service').toClass(JWTService);
     this.bind('services.user.service').toClass(MyUserService);
+    
+    // Bind token service for JWTAuthenticationStrategy
+    this.bind('services.authentication.jwt.tokenservice').toClass(JWTService);
 
     // JWT secret and expiration
     this.bind('authentication.jwt.secret').to(process.env.JWT_SECRET || 'your-secret-key-change-this-in-production');
